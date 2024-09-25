@@ -16,28 +16,29 @@ public class PoemController {
     private static PoemDAO poemDAO = new PoemDAO(emf);
     private static ObjectMapper objectMapper = new ObjectMapper();
 
-    public static void addRoutes(Javalin app) {
-        app.get("/", ctx -> getAllPoems(ctx));
-        app.get("/{id}", ctx -> getPoemById(ctx));
-        app.post("/", ctx -> createPoem(ctx));
-    }
+//    public static void addRoutes(Javalin app) {
+//        app.get("/", PoemController::getAllPoems);
+//        app.get("/{id}", PoemController::getPoemById);
+//        app.post("/", PoemController::createPoem);
+//    }
 
-    private static void getAllPoems(Context ctx) {
+    public static void getAllPoems(Context ctx) {
         Set<PoemDTO> poems = poemDAO.getAll();
         ctx.json(poems, PoemDTO.class);
     }
 
-    private static void getPoemById(Context ctx) {
+    public static void getPoemById(Context ctx) {
         String id = ctx.pathParam("id");
-        ctx.status(200);
         ctx.json(poemDAO.getById(Long.parseLong(id)), PoemDTO.class);
+        ctx.status(200);
     }
 
-    private static void createPoem(Context ctx) throws JsonProcessingException {
+    public static void createPoem(Context ctx) throws JsonProcessingException {
         String jSonString = ctx.body();
+        System.out.println(jSonString);
         PoemDTO poemDTO = objectMapper.readValue(jSonString, PoemDTO.class);
-        ctx.status(201);
         poemDAO.create(poemDTO);
+        ctx.status(201);
     }
 
     private static void updatePoem(Context ctx) {
