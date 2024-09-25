@@ -22,7 +22,7 @@ public class PoemDTO {
         this.poem = poem.getPoem();
     }
 
-    public Poem getAsEntity(){
+    public Poem getAsEntity() {
         return Poem.builder()
                 .author(author)
                 .title(title)
