@@ -7,12 +7,13 @@ public class Main {
     public static void main(String[] args) {
 
         Javalin app = Javalin.create(config -> {
-            config.router.contextPath = "/api/poems"; // all base pat for all routes
-            config.bundledPlugins.enableRouteOverview("/routes"); // enables route overview at /routes
-        });
+            config.router.contextPath = "/api/poems";
+        }).start(7000);
 
-        PoemController.addRoutes(app);
 
-        app.start(7000);
+        app.get("/", PoemController::getAllPoems);
+        app.get("/{id}", PoemController::getPoemById);
+        app.post("/", PoemController::createPoem);
+
     }
 }
