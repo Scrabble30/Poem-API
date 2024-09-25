@@ -4,8 +4,6 @@ import app.DAOs.PoemDAO;
 import app.DTOs.PoemDTO;
 import app.config.HibernateConfig;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.javalin.Javalin;
 import io.javalin.http.Context;
 import jakarta.persistence.EntityManagerFactory;
 
@@ -14,7 +12,6 @@ import java.util.Set;
 public class PoemController {
     private static EntityManagerFactory emf = HibernateConfig.getEntityManagerFactory("poems");
     private static PoemDAO poemDAO = new PoemDAO(emf);
-    private static ObjectMapper objectMapper = new ObjectMapper();
 
 //    public static void addRoutes(Javalin app) {
 //        app.get("/", PoemController::getAllPoems);
@@ -33,10 +30,10 @@ public class PoemController {
         ctx.status(200);
     }
 
-    public static void createPoem(Context ctx) throws JsonProcessingException {
+    public static void createPoem(Context ctx) {
         String jSonString = ctx.body();
         System.out.println(jSonString);
-        PoemDTO poemDTO = objectMapper.readValue(jSonString, PoemDTO.class);
+        PoemDTO poemDTO = ctx.bodyAsClass(PoemDTO.class);
         poemDAO.create(poemDTO);
         ctx.status(201);
     }
