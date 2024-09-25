@@ -2,6 +2,7 @@ package app.DTOs;
 
 import app.entities.Poem;
 import app.enums.PoemType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class PoemDTO {
         this.poem = poem.getPoem();
     }
 
+    @JsonIgnore
     public Poem getAsEntity() {
         return Poem.builder()
                 .author(author)
