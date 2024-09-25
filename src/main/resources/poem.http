@@ -1,1 +1,37 @@
-GET http://localhost:7000/api/poems
+GET http://localhost:7000/api/poems/
+
+###
+#Poem 1
+POST http://localhost:7000/api/poems/
+Content-Type: application/json
+
+{
+  "author": "Robert Frost",
+  "title": "Nothing Gold Can Stay",
+  "type": "SHORT_POEM",
+  "poem": "Nature's first green is gold,\nHer hardest hue to hold.\nHer early leaf's a flower, \nBut only so an hour."
+}
+
+###
+#Poem 2
+POST http://localhost:7000/api/poems/
+Content-Type: application/json
+
+{
+  "author": "Ella Wheeler Wilcox",
+  "title": "A Fallen Leaf",
+  "type": "SHORT_POEM",
+  "poem": "A trusting little leaf of green. \nA bold audacious frost. \nA rendezvous, a kiss or two. \nAnd youth for ever lost."
+}
+
+###
+#Poem 3
+POST http://localhost:7000/api/poems/
+Content-Type: application/json
+
+{
+  "author": "Shel Silverstein",
+  "title": "Underface",
+  "type": "SHORT_POEM",
+  "poem": "Underneath my outside face. \nThere's a face that none can see. \nA little less smiley, \nA little less sure."
+}
