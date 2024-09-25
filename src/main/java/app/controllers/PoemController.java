@@ -20,6 +20,8 @@ public class PoemController {
 
     public static void addRoutes(Javalin app) {
         app.get("/", ctx -> getAllPoems(ctx));
+        app.get("/{id}", ctx -> getPoemById(ctx));
+        app.post("/", ctx -> createPoem(ctx));
     }
 
     private static void getAllPoems(Context ctx) {
