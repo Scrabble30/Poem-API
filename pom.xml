@@ -9,6 +9,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <logback.version>1.5.8</logback.version>
+        <slf4j.version>2.0.16</slf4j.version>
+        <javalin.version>6.3.0</javalin.version>
+        <jackson.version>2.17.2</jackson.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,15 +24,18 @@
         <hamcrest.version>2.0.0.0</hamcrest.version>
         <testcontainers.version>1.18.0</testcontainers.version>
         <hikari.version>5.1.0</hikari.version>
-        <javalin.version>6.3.0</javalin.version>
-        <logback.version>1.5.8</logback.version>
-        <slf4j.version>2.0.16</slf4j.version>
 
         <!-- DATABASE PROJECT NAME ON SERVER  -->
-        <db.name>poems</db.name>
+        <db.name>jpademo</db.name>
     </properties>
 
     <dependencies>
+        <!--  WEB SERVICE   -->
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <version>${javalin.version}</version>
+        </dependency>
 
         <!--        https://www.baeldung.com/jackson-->
         <dependency>
@@ -113,11 +120,7 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>io.javalin</groupId>
-            <artifactId>javalin</artifactId>
-            <version>${javalin.version}</version>
-        </dependency>
+        <!--  Logging   -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>

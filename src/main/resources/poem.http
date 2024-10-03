@@ -1,8 +1,11 @@
-GET http://localhost:7000/api/poems/
+### Get all poems
+GET {{URL}}
 
-###
-#Poem 1
-POST http://localhost:7000/api/poems/
+### Get poem by id 1
+GET {{URL}}/1
+
+### Create poem 1
+POST {{URL}}
 Content-Type: application/json
 
 {
@@ -12,9 +15,9 @@ Content-Type: application/json
   "poem": "Nature's first green is gold,\nHer hardest hue to hold.\nHer early leaf's a flower, \nBut only so an hour."
 }
 
-###
-#Poem 2
-POST http://localhost:7000/api/poems/
+### Create poem 2
+
+POST {{URL}}
 Content-Type: application/json
 
 {
@@ -24,9 +27,9 @@ Content-Type: application/json
   "poem": "A trusting little leaf of green. \nA bold audacious frost. \nA rendezvous, a kiss or two. \nAnd youth for ever lost."
 }
 
-###
-#Poem 3
-POST http://localhost:7000/api/poems/
+### Create poem 3
+
+POST {{URL}}
 Content-Type: application/json
 
 {
@@ -35,3 +38,15 @@ Content-Type: application/json
   "type": "SHORT_POEM",
   "poem": "Underneath my outside face. \nThere's a face that none can see. \nA little less smiley, \nA little less sure."
 }
+
+### Update poem
+PUT {{URL}}/2
+Content-Type: application/json
+
+{
+  "type": "HAIKU"
+}
+
+### Delete poem by id (3)
+
+DELETE {{URL}}/3
